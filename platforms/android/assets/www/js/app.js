@@ -87,3 +87,20 @@ app.config(['$routeProvider', '$locationProvider','$httpProvider',
                 })
         $locationProvider.html5Mode(false).hashPrefix('!');
     }]);
+
+
+/* Push set up */
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    console.log("Device Ready");
+    var push = PushNotification.init({
+      android: {
+          senderID: "173338710703"
+      }
+    });
+    push.on('registration', function(data) {
+        console.log(data.registrationId);
+    });
+}

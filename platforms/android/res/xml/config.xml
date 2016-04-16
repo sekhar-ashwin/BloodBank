@@ -5,6 +5,12 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="PushNotification">
+        <param name="android-package" value="com.adobe.phonegap.push.PushPlugin" />
+    </feature>
+    <platform name="android">
+        <preference name="android-minSdkVersion" value="15"/>
+    </platform>
     <allow-intent href="market:*" />
     <name>HelloCordova</name>
     <description>
