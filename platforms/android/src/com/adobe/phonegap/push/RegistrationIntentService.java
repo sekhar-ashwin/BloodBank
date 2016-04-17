@@ -13,7 +13,7 @@ import com.google.android.gms.iid.InstanceID;
 import java.io.IOException;
 
 public class RegistrationIntentService extends IntentService implements PushConstants {
-    public static final String LOG_TAG = "PushPlugin";
+    public static final String LOG_TAG = "PushPlugin_RegistrationIntentService";
 
     public RegistrationIntentService() {
         super(LOG_TAG);

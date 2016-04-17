@@ -39,7 +39,7 @@ import java.util.Random;
 @SuppressLint("NewApi")
 public class GCMIntentService extends GcmListenerService implements PushConstants {
 
-    private static final String LOG_TAG = "PushPlugin";
+    private static final String LOG_TAG = "PushPlugin_GCMIntentService";
     private static HashMap<Integer, ArrayList<String>> messageMap = new HashMap<Integer, ArrayList<String>>();
 
     public void setNotification(int notId, String message){
@@ -63,10 +63,10 @@ public class GCMIntentService extends GcmListenerService implements PushConstant
         if (extras != null) {
 
             SharedPreferences prefs = getApplicationContext().getSharedPreferences(PushPlugin.COM_ADOBE_PHONEGAP_PUSH, Context.MODE_PRIVATE);
-            boolean forceShow = prefs.getBoolean(FORCE_SHOW, false);
+            boolean forceShow = true;//prefs.getBoolean(FORCE_SHOW, false);
 
             extras = normalizeExtras(extras);
-
+            Log.d(LOG_TAG, "foreground"+forceShow);
             // if we are in the foreground and forceShow is `false` only send data
             if (!forceShow && PushPlugin.isInForeground()) {
                 Log.d(LOG_TAG, "foreground");

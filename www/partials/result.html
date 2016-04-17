@@ -1,13 +1,14 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
+		<div class="col-xs-12">
       <div class="jumbotron" ng-repeat="d in data|filter:{BLOODGROUP:group}">
 			    <p style ="font-size:16px">{{d.NAME}}</p>
-           <p style="font-size:13px">{{d.PHONE_NO}} </p>
+           <p style="font-size:13px">{{d.PHONE_NO}}</p>
            <p style="font-size:13px">{{d.ROLLNO}}</p>
-
+					 <button class="btn btn-default btn-xxs" type="submit">Agreed</button>
+					 <input class="btn btn-default btn-xxs" type="submit" style='margin-left:10px' value="Disagree">
+					 <input class="btn btn-default btn-xxs" type="submit" style='margin-left:10px' value="Donate">
 			</div>
-
     </div>
   </div>
 </div>

@@ -27,6 +27,31 @@ var app = angular.module('app', [
 app.run(function($rootScope,BloodResource,BloodService){
 
 
+  /*var push = PushNotification.init({
+    android: {
+        senderID: "173338710703"
+    }
+  });
+  push.on('registration', function(data) {
+      console.log(data.registrationId);
+
+      BloodResource.addId({id:data.registrationId},function(response){
+        console.log(response);
+      },function(err){
+        console.log(err);
+      });
+
+  });
+
+  push.on('notification', function(data) {
+    console.log(data);
+  });
+
+  push.on('error', function(e) {
+      // e.message
+  });*/
+
+
   if(!localStorage.isNotFirst){
 
     console.log('first run');
@@ -91,16 +116,12 @@ app.config(['$routeProvider', '$locationProvider','$httpProvider',
 
 /* Push set up */
 
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    console.log("Device Ready");
-    var push = PushNotification.init({
-      android: {
-          senderID: "173338710703"
-      }
-    });
-    push.on('registration', function(data) {
-        console.log(data.registrationId);
-    });
+
+   console.log("Device Ready");
+   angular.bootstrap(document.body, ['app']);
+
 }
