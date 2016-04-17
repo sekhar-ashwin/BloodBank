@@ -23,7 +23,7 @@ AppControllers.controller('HomeCtrl',function($rootScope,$scope,$location,$inter
       if(data.status=="success"){
         $scope.data = data.data;
       }
-    })
+    });
   }
 
   $scope.refreshData();
@@ -41,11 +41,36 @@ AppControllers.controller('HomeCtrl',function($rootScope,$scope,$location,$inter
 });
 
 
-AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,$location,BloodService){
-
+AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,$location,$interval,BloodService,BloodResource){
+  $scope.hide = true;
   $scope.group = $routeParams.group;
-  BloodService.getData(function(data){
 
+  $scope.refreshData = function(){
+    BloodResource.getRequest({},function(data){
+      console.log(data);
+      if(data.status=="success"){
+        var d = data.data;
+        for(var i=0;i<d.length;i++){
+          console.log(d[i].BLOODGROUP+" "+$scope.group);
+          if(d[i].BLOODGROUP==$scope.group){
+            $scope.r = d[i];
+            $scope.hide = false;
+            return;
+          }
+        }
+        $scope.hide = true;
+      }
+    });
+  }
+
+  $scope.refreshData();
+
+  $interval(function(){
+    $scope.refreshData();
+  }, 2500);
+
+
+  BloodService.getData(function(data){
     $scope.data = data.content;
   });
 

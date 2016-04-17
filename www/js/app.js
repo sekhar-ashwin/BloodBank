@@ -27,7 +27,7 @@ var app = angular.module('app', [
 app.run(function($rootScope,BloodResource,BloodService){
 
 
-  /*var push = PushNotification.init({
+  var push = PushNotification.init({
     android: {
         senderID: "173338710703"
     }
@@ -49,7 +49,7 @@ app.run(function($rootScope,BloodResource,BloodService){
 
   push.on('error', function(e) {
       // e.message
-  });*/
+  });
 
 
   if(!localStorage.isNotFirst){

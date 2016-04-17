@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1">
-			<div class="jumbotron" ng-repeat="d in data">
+		<div class="col-xs-12">
+			<div class="jumbotron center" ng-repeat="d in data">
 			    <p>No. of {{d.BLOODGROUP}} required = {{d.NO_OF_UNITS}}</p>
 			</div>
 <div class="form-group">
@@ -19,7 +19,7 @@
 </select>
 </div>
 <div class="form-group" style="text-align:center">
-<button type="button" class="btn btn-danger" ng-click="search(group)">Search</button>
+<button type="button" class="btn btn-danger btn-lg" ng-click="search(group)">Search</button>
 </div>
 <div class="form-group">
 	<label for="Unit">Select Group</label>
@@ -40,7 +40,7 @@
     <input type="number" class="form-control" placeholder="Number of Units" ng-model="num">
   </div>
 <div class="form-group" style="text-align:center">
-<button type="button" class="btn btn-danger" ng-click="send(group1,num)">Update</button>
+<button type="button" class="btn btn-danger btn-lg" ng-click="send(group1,num)">Update</button>
 </div>
 
 

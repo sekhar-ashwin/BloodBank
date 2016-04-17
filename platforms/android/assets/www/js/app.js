@@ -117,7 +117,6 @@ app.config(['$routeProvider', '$locationProvider','$httpProvider',
 /* Push set up */
 
 
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
