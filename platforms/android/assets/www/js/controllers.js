@@ -74,4 +74,10 @@ AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,
     $scope.data = data.content;
   });
 
+  $scope.agree = function(code,roll){
+    BloodResource.sendResponse({code:code,roll:roll},function(data){
+      console.log(data);
+    })
+  }
+
 });

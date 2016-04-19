@@ -73,5 +73,26 @@ AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,
   BloodService.getData(function(data){
     $scope.data = data.content;
   });
+  $scope.agreed=true;
+  $scope.disagreed=true;
+  $scope.donated=true;
+  $scope.agree = function(code,roll,group){
+     BloodResource.sendResponse({code:code,roll:roll,group:group },function(data){
+      alert(code);
+      if(code==0){
+        $scope.disagreed=false;
+        $scope.agreed=true;
+      }
+      if(code==1){
+        $scope.agreed=false;
+        $scope.disagreed=true;
+      }
+      if(code==2){
+        $scope.donated=false;}
+      console.log(data);
+    },function(error){
+       console.log(error);
+   });
+  }
 
 });

@@ -11,7 +11,8 @@ AppServices.factory('BloodResource',function ($resource) {
         get:{method:'GET', cache:false,isArray:true},
         addId:{method:'GET',cache:false,isArray:false,url:baseUrl+"addId.php"},
         request:{method:'GET',cache:false,isArray:false,url:baseUrl+"bloodrequest.php"},
-        getRequest:{method:'GET',cache:false,isArray:false,url:baseUrl+"getRequests.php"}
+        getRequest:{method:'GET',cache:false,isArray:false,url:baseUrl+"getRequests.php"},
+        sendResponse:{method:'GET',cache:false,isArray:false,url:baseUrl+"response.php"}
     });
 });
 
