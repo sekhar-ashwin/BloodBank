@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <p style ="font-size:16px">{{d.NAME}}</p>
+     <p style="font-size:13px">Phone: {{d.PHONE_NO}}</p>
+     <p style="font-size:13px">Roll No.:{{d.ROLLNO}}</p>
+     <p style="font-size:13px">Roesp No.:{{d.RESPONSE}}</p>
+     <button class="btn btn-default btn-xxs" ng-click="agree(d,1,d.ROLLNO,d.BLOODGROUP)" ng-hide="(!agreed||d.RESPONSE==2) || d.RESPONSE==1"  style='margin-left:20px' type="submit">AGREED</button>
+     <button class="btn btn-default btn-xxs" ng-click="agree(d,0,d.ROLLNO,d.BLOODGROUP)" ng-hide="(!disagreed||d.RESPONSE==2)||d.RESPONSE==0" style='margin-left:15px' type="submit">DISAGREED</button>
+     <button class="btn btn-default btn-xxs" ng-click="agree(d,2,d.ROLLNO,d.BLOODGROUP)" ng-hide="!donated||d.RESPONSE==2" style='margin-left:15px' type="submit">DONATED</button>
+</div>
