@@ -51,24 +51,30 @@ app.run(function($rootScope,BloodResource,BloodService){
   });
 
 
-  if(!localStorage.isNotFirst){
+  if(true){
 
     console.log('first run');
 
     var load = function(){
       BloodResource.get({},function(response){
         console.log(response);
-        var contacts = {id:1,content:response};
-
-        BloodService.put(contacts,function(data){
-          console.log(data);
-          localStorage.isNotFirst = true;
-          console.log(localStorage.isNotFirst);
-        },function(error){
-          console.log(error);
+        //clear db first
+        BloodService.clearAll(function(){
+          for(var i=0;i<response.length;i++){
+            var contacts=response[i];
+            BloodService.put(contacts,function(data){
+              console.log(data);
+              localStorage.isNotFirst = true;
+              //console.log(localStorage.isNotFirst);
+            },function(error){
+              console.log(error);
+            });
+          }
+          BloodService.loadCurrent();
         });
 
-        BloodService.loadCurrent();
+
+
 
 
       },function(error){
@@ -103,11 +109,17 @@ app.config(['$routeProvider', '$locationProvider','$httpProvider',
 
         $routeProvider.
                 when('/', {
+                    templateUrl: 'partials/login.html',
+                    controller: 'LogCtrl'
+                }).when('/home', {
                     templateUrl: 'partials/home.html',
                     controller: 'HomeCtrl'
                 }).when('/result/:group',{
                     templateUrl: 'partials/result.html',
                     controller: 'ResultCtrl'
+                }).when('/agreed',{
+                    templateUrl: 'partials/agreed.html',
+                    controller: 'AgreeCtrl'
                 })
         $locationProvider.html5Mode(false).hashPrefix('!');
     }]);
