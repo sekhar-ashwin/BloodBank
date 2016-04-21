@@ -30,7 +30,7 @@ AppControllers.controller('HomeCtrl',function($rootScope,$scope,$location,$inter
 
   $interval(function(){
     $scope.refreshData();
-  }, 2500);
+  }, 4000);
 
   $scope.navigate = function(item) {
     $scope.title = item.name;
@@ -67,17 +67,34 @@ AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,
 
   $interval(function(){
     $scope.refreshData();
-  }, 2500);
+  }, 4000);
 
 
   BloodService.getData(function(data){
     $scope.data = data.content;
   });
-
-  $scope.agree = function(code,roll){
-    BloodResource.sendResponse({code:code,roll:roll},function(data){
+  $scope.agreed=true;
+  $scope.disagreed=true;
+  $scope.donated=true;
+  $scope.agree = function(code,roll,group){
+     BloodResource.sendResponse({code:code,roll:roll,group:group },function(data){
+      //alert(code);
+      if(code==0){
+        $scope.disagreed=false;
+        $scope.agreed=true;
+      }
+      if(code==1){
+        $scope.agreed=false;
+        $scope.disagreed=true;
+      }
+      if(code==2){
+        $scope.donated=false;
+        $scope.agreed=false;
+        $scope.disagreed=false;}
       console.log(data);
-    })
+    },function(error){
+       console.log(error);
+   });
   }
 
 });

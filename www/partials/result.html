@@ -8,9 +8,9 @@
 				    <p style ="font-size:16px">{{d.NAME}}</p>
 	           <p style="font-size:13px">Phone: {{d.PHONE_NO}}</p>
 	           <p style="font-size:13px">Roll No.:{{d.ROLLNO}}</p>
-						 <button class="btn btn-default btn-xxs" ng-click="agree(1,d.ROLLNO,d.BLOODGROUP)" ng-hide="!agreed" style='margin-left:20px' type="submit">AGREED</button>
-						 <button class="btn btn-default btn-xxs" ng-click="agree(0,d.ROLLNO,d.BLOODGROUP)" ng-hide="!disagreed" style='margin-left:15px' type="submit">DISAGREED</button>
-						 <button class="btn btn-default btn-xxs" ng-click="agree(2,d.ROLLNO,d.BLOODGROUP)" ng-hide="!donated" style='margin-left:15px' type="submit">DONATED</button>
+						 <button class="btn btn-default btn-xxs" ng-click="agree(1,d.ROLLNO,d.BLOODGROUP)" ng-hide="!agreed" ng-hide="d.RESPONSE==2" ng-show="d.RESPONSE!=1"  style='margin-left:20px' type="submit">AGREED</button>
+						 <button class="btn btn-default btn-xxs" ng-click="agree(0,d.ROLLNO,d.BLOODGROUP)" ng-hide="!disagreed" ng-show="d.RESPONSE!=0" ng-hide="d.RESPONSE==2" style='margin-left:15px' type="submit">DISAGREED</button>
+						 <button class="btn btn-default btn-xxs" ng-click="agree(2,d.ROLLNO,d.BLOODGROUP)" ng-hide="!donated" ng-hide="d.RESPONSE==2" style='margin-left:15px' type="submit">DONATED</button>
 				</div>
 			</div>
     </div>

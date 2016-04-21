@@ -30,7 +30,7 @@ AppControllers.controller('HomeCtrl',function($rootScope,$scope,$location,$inter
 
   $interval(function(){
     $scope.refreshData();
-  }, 2500);
+  }, 4000);
 
   $scope.navigate = function(item) {
     $scope.title = item.name;
@@ -67,7 +67,7 @@ AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,
 
   $interval(function(){
     $scope.refreshData();
-  }, 2500);
+  }, 4000);
 
 
   BloodService.getData(function(data){
@@ -78,7 +78,7 @@ AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,
   $scope.donated=true;
   $scope.agree = function(code,roll,group){
      BloodResource.sendResponse({code:code,roll:roll,group:group },function(data){
-      alert(code);
+      //alert(code);
       if(code==0){
         $scope.disagreed=false;
         $scope.agreed=true;
@@ -88,7 +88,9 @@ AppControllers.controller('ResultCtrl', function($scope,$rootScope,$routeParams,
         $scope.disagreed=true;
       }
       if(code==2){
-        $scope.donated=false;}
+        $scope.donated=false;
+        $scope.agreed=false;
+        $scope.disagreed=false;}
       console.log(data);
     },function(error){
        console.log(error);

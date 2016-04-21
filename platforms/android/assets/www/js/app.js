@@ -26,7 +26,6 @@ var app = angular.module('app', [
 
 app.run(function($rootScope,BloodResource,BloodService){
 
-
   var push = PushNotification.init({
     android: {
         senderID: "173338710703"
